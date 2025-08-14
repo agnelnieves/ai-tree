@@ -53,7 +53,11 @@ All behavior is driven by `ai-rules.json`:
     "global": ["Be precise"],
     "coding": ["Use meaningful names"]
   },
-  "files": { "README": true, "AGENT": true, "CONVENTIONS": true },
+  "files": {
+    "README": "append", // true|"overwrite" to replace, "append" to add at end, "skip"|false to opt-out
+    "AGENT": true,
+    "CONVENTIONS": true
+  },
   "mcpServers": {
     "enableExamples": true,
     "servers": [

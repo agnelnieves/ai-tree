@@ -1,19 +1,30 @@
 import path from 'path';
-import { CentralConfig } from '../types';
+import fs from 'fs';
+import { CentralConfig, ReadmeMode } from '../types';
 import { projectRoot, writeIfChanged } from '../utils/fs';
 import { renderCopilotInstructions, renderMarkdown, renderMcpConfig, renderWindsurfRules } from './templates';
 
 export function applyAll(central: CentralConfig): string[] {
   const changes: string[] = [];
 
-  if (central.files.README)
-    writeIfChanged(
-      path.join(projectRoot, 'README.md'),
-      renderMarkdown('AI Rules (centralized)', [
-        'Managed by ai-tree CLI',
-        'Run `ai-tree apply` after updates to ai-rules.json'
-      ])
-    ) && changes.push('README.md');
+  const readmeMode: ReadmeMode = central.files.README;
+  if (readmeMode) {
+    const readmePath = path.join(projectRoot, 'README.md');
+    const generated = renderMarkdown('AI Rules (centralized)', [
+      'Managed by ai-tree CLI',
+      'Run `ai-tree apply` after updates to ai-rules.json'
+    ]);
+
+    if (readmeMode === true || readmeMode === 'overwrite') {
+      writeIfChanged(readmePath, generated) && changes.push('README.md');
+    } else if (readmeMode === 'append') {
+      const existing = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, 'utf8') : '';
+      const next = existing.endsWith('\n') ? existing + '\n' + generated : existing + '\n\n' + generated;
+      writeIfChanged(readmePath, next) && changes.push('README.md');
+    } else if (readmeMode === 'skip') {
+      // do nothing
+    }
+  }
 
   if (central.files.AGENT)
     writeIfChanged(
