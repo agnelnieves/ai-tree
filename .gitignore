@@ -43,3 +43,21 @@ opencode.json
 AGENT.md
 CONVENTIONS.md
 
+
+# ai-tree managed ignores — start
+node_modules/
+dist/
+.ai-tree/
+.codeium/
+.codex/
+.cursor/
+.kiro/
+.windsurf/
+.zed/
+.windsurfrules
+opencode.json
+.github/copilot-instructions.md
+.vscode/mcp.json
+AGENT.md
+CONVENTIONS.md
+# ai-tree managed ignores — end

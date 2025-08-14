@@ -4,6 +4,7 @@ import { projectRoot, readJson, writeJson } from '../utils/fs';
 import { log } from '../utils/log';
 import { applyAll } from '../generators/applyAll';
 import { defaultCentral } from '../generators/templates';
+import { syncGitignore } from '../utils/gitignore';
 
 const configDir = path.join(projectRoot, '.ai-tree');
 const stateFile = path.join(configDir, 'state.json');
@@ -20,6 +21,27 @@ export function cmdInit(): void {
   writeJson(stateFile, { initializedAt: new Date().toISOString(), version: 1 });
   const changed = applyAll(readJson<CentralConfig>(centralConfigFile, defaultCentral()));
   log.info(`Applied templates (${changed.length} files).`);
+
+  // Ensure .gitignore contains ai-tree managed block
+  const ignored = [
+    'node_modules/',
+    'dist/',
+    '.ai-tree/',
+    '.codeium/',
+    '.codex/',
+    '.cursor/',
+    '.kiro/',
+    '.windsurf/',
+    '.zed/',
+    '.windsurfrules',
+    'opencode.json',
+    '.github/copilot-instructions.md',
+    '.vscode/mcp.json',
+    'AGENT.md',
+    'CONVENTIONS.md'
+  ];
+  const giChanged = syncGitignore(ignored);
+  if (giChanged) log.info('Updated .gitignore with ai-tree managed block.');
 }
 
 export function cmdApply(): void {
