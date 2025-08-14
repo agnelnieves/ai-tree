@@ -17,7 +17,7 @@
     ]
   },
   "files": {
-    "README": true,
+    "README": "append",
     "AGENT": true,
     "CONVENTIONS": true
   },
