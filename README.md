@@ -54,7 +54,7 @@ All behavior is driven by `ai-rules.json`:
     "coding": ["Use meaningful names"]
   },
   "files": {
-    "README": "append", // true|"overwrite" to replace, "append" to add at end, "skip"|false to opt-out
+    "README": "append", // Readme mode: avoids accidental overwrites; choose "append"|"overwrite"|"skip" (true behaves like overwrite)
     "AGENT": true,
     "CONVENTIONS": true
   },

@@ -5,6 +5,7 @@ export type McpServer = {
   args?: string[];
 };
 
+// Prevents accidental overwrites of an existing project README by letting users choose to append, overwrite, or skip.
 export type ReadmeMode = boolean | 'append' | 'overwrite' | 'skip';
 
 export type CentralConfig = {
