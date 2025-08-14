@@ -1,0 +1,45 @@
+# Node / TypeScript
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Coverage / cache
+coverage/
+.nyc_output/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Temp
+tmp/
+temp/
+
+# ai-tree generated artifacts (from `ai-tree apply`)
+.ai-tree/
+.codeium/
+.codex/
+.cursor/
+.kiro/
+.windsurf/
+.zed/
+.windsurfrules
+opencode.json
+.github/copilot-instructions.md
+.vscode/mcp.json
+AGENT.md
+CONVENTIONS.md
+

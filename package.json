@@ -1,0 +1,38 @@
+{
+  "name": "ai-tree",
+  "version": "0.2.0",
+  "description": "Unified CLI to manage AI editor rules and MCP configs (Cursor, Windsurf, Copilot, Kiro, Codeium, Codex, VSCode, Zed, OpenCode).",
+  "type": "commonjs",
+  "bin": {
+    "ai-tree": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "node dist/cli.js --help",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=16.14"
+  },
+  "keywords": [
+    "ai",
+    "mcp",
+    "cursor",
+    "windsurf",
+    "copilot",
+    "zed",
+    "vscode",
+    "cli"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "typescript": "^5.4.0"
+  }
+}

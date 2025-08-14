@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "project": {
+    "name": "ai-tree",
+    "description": "AI assistants unified rules and MCP config."
+  },
+  "rules": {
+    "global": [
+      "Be precise, cite file paths with backticks",
+      "Prefer making edits over proposing pseudo-code",
+      "Keep code style consistent with repo",
+      "Never leak secrets"
+    ],
+    "coding": [
+      "Use meaningful variable names",
+      "Add tests for public APIs when changed"
+    ]
+  },
+  "files": {
+    "README": true,
+    "AGENT": true,
+    "CONVENTIONS": true
+  },
+  "mcpServers": {
+    "enableExamples": true,
+    "servers": [
+      {
+        "id": "repo-fs",
+        "description": "Read-only repository file server",
+        "command": "node",
+        "args": [
+          "-e",
+          "console.log(\"mcp repo fs placeholder\")"
+        ]
+      }
+    ]
+  }
+}
