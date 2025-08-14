@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { cmdApply, cmdClean, cmdDoctor, cmdInit, cmdList } from './commands';
+import { cmdApply, cmdClean, cmdDoctor, cmdInit, cmdList, printOverrideSafetyNotes } from './commands';
 import { log } from './utils/log';
 
 function help(): void {
@@ -13,7 +13,9 @@ function help(): void {
       '  ai-tree list    Show files managed by this tool',
       '  ai-tree clean   Remove generated files',
       '  ai-tree doctor  Check expected directories',
-      '  ai-tree help    Show this message'
+      '  ai-tree help    Show this message',
+      '',
+      'Tip: Run `ai-tree init` in a branch first. The tool avoids overwriting unchanged files and README mode is configurable.'
     ].join('\n')
   );
 }

@@ -122,3 +122,16 @@ export function cmdDoctor(): void {
   report.forEach((r) => log.info(`${r.exists ? 'OK ' : 'MISS '} ${r.dir}`));
 }
 
+export function printOverrideSafetyNotes(): void {
+  log.info(
+    [
+      '',
+      'Safety notes:',
+      '- Existing files are updated only when content changes.',
+      '- README behavior is controlled by `files.README` (append|overwrite|skip).',
+      '- Consider running in a clean branch and reviewing diffs.',
+      ''
+    ].join('\n')
+  );
+}
+
